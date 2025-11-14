@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <h1>Hello Admin.</h1>
+    <hr><hr>
+    <div class="container">
+        <h3>The IP of the server is: (Should be 83.28.215.218)</h3>
+        <p id="server-ip">Fetching...</p>
+    </div>
+    <script>
+        // Fetch public IP address using ipify API
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('server-ip').textContent = data.ip;
+            })
+            .catch(error => {
+                document.getElementById('server-ip').textContent = 'Error fetching IP';
+                console.error('Error:', error);
+            });
+    </script>
+</body>
+</html>
